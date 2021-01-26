@@ -9,8 +9,8 @@ class Gate extends PIXI.Sprite{
         me.speed = 1;
         me.reward = 25;
         me.radius = 2;
-        me.x = rangedRandomNumber(0, 1000);
-        me.y = rangedRandomNumber(0, 666);
+        me.x = rangedRandomNumber(100, 900);
+        me.y = rangedRandomNumber(75, 575);
         me.xVel = 0;
         me.yVel = 0;
         me.rotation = 0;
