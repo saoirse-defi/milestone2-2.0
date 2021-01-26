@@ -1,5 +1,6 @@
 let keyTracker = {};
 let gate1 = {};
+let player = {};
 let gates = [];
 
 const rangedRandomNumber = (min, max) => {
@@ -13,19 +14,19 @@ const gameLoop = () => {
 
         //W key
         if(keys["87"]){
-            hero.y -= hero.speed; //5 being movement speed, lets set as own variable later
+            player.y -= player.speed; //5 being movement speed, lets set as own variable later
         }
         //A key
         if(keys["65"]){
-            hero.x -= hero.speed;
+            player.x -= player.speed;
         }
         //S key
         if(keys["83"]){
-            hero.y += hero.speed;
+            player.y += player.speed;
         }
         //D key
         if(keys["68"]){
-            hero.x += hero.speed;
+            player.x += player.speed;
         }
 };
 
@@ -44,9 +45,12 @@ const errorReport = (e) => {
 };
 
 const initialSpawn = () => {
+    player = new Player(app.stage);
+
     gate1 = new Gate(app.stage);
     gates.push(gate1);
 };
+
 
 const loadingFinished = () => {
     initialSpawn();
@@ -83,6 +87,7 @@ window.onload = () => {
 
     app.loader.baseUrl = "images";
     app.loader
+        .add("player", "player.png")
         .add("gate", "cleargate.png");
 
     app.loader.onError.add(errorReport);
