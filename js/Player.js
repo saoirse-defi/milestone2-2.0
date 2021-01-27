@@ -20,7 +20,7 @@ class Player extends PIXI.Sprite{
 
     //keeps hero within canvas bounds
     stayWithinArea(){
-        me.x = Math.max(0 + me.radius, Math.min(me.x + me.xVel, 1000 - me.radius));
-        me.y = Math.max(0 + me.radius, Math.min(me.y + me.yVel, 666 - me.radius));
+        this.x = Math.max(0 + this.radius, Math.min(this.x + this.xVel, 1000 - this.radius));
+        this.y = Math.max(0 + this.radius, Math.min(this.y + this.yVel, 666 - this.radius));
     }
 }
