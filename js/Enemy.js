@@ -8,6 +8,7 @@ class Enemy extends PIXI.Sprite{
         me.height = 30;
         me.speed = 4;
         me.reward = 100;
+        me.dead = false;
         me.radius = 2;
         me.x = rangedRandomNumber(100, 900);
         me.y = rangedRandomNumber(75, 575);
@@ -21,20 +22,22 @@ class Enemy extends PIXI.Sprite{
 
     //swarms hero
     hone(a, b) {
-        let dx = a - me.x;
-        let dy = b - me.y;
+        let dx = a - this.x;
+        let dy = b - this.y;
         let honeAngle = Math.atan2(dy, dx);
 
-        me.xVel = me.speed * Math.cos(honeAngle);
-        me.yVel = me.speed * Math.sin(honeAngle);
+        this.xVel = this.speed * Math.cos(honeAngle);
+        this.yVel = this.speed * Math.sin(honeAngle);
     }
 
     
     //keeps alien within canvas bounds
-    stayWithinBounds(a, b) {
-        me.hone(a, b);
+    honeWithinArea(a, b) {
+        this.hone(a, b);
       
-        me.x = Math.max(0 + me.radius, Math.min(me.x + me.xVel, 1000 - me.radius));
-        me.y = Math.max(0 + me.radius, Math.min(me.y + me.yVel, 666 - me.radius));
+        this.x = Math.max(0 + this.radius, Math.min(this.x + this.xVel, 1000 - this.radius));
+        this.y = Math.max(0 + this.radius, Math.min(this.y + this.yVel, 666 - this.radius));
     }
+
+   
 }
